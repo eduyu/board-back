@@ -22,7 +22,7 @@ class ArticleSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Article
-        fields = ('user', 'title', 'content', 'created_at', 'updated_at', 'comments',)
+        fields = ('pk', 'user', 'title', 'content', 'created_at', 'updated_at', 'comments',)
 
 
 # Article List Read
@@ -36,11 +36,11 @@ class ArticleListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Article
-        fields = ('user', 'title', 'created_at',)
+        fields = ('pk', 'user', 'title', 'created_at',)
 
 
 # Comment Create/Update
 class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
-        fields = ('user', 'article', 'content')
+        fields = ('pk', 'user', 'article', 'content')
