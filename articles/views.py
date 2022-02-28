@@ -5,7 +5,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 from .models import Article, Comment
-from .serializers import ArticleListSerializer, ArticleSerializer
+from .serializers import ArticleListSerializer, ArticleSerializer, CommentSerializer
 
 
 @api_view(['GET', 'POST'])

@@ -1,3 +1,4 @@
+from dataclasses import fields
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
 from .models import Article, Comment
@@ -29,3 +30,9 @@ class ArticleListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Article
         fields = ('user', 'title', 'created_at',)
+
+
+class CommentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Comment
+        fields = ('user', 'article', 'content')
