@@ -13,7 +13,13 @@ class ArticleSerializer(serializers.ModelSerializer):
             model = Comment
             fields = ('user', 'content', 'created_at', 'updated_at')
 
-    comments = CommentListSerializer(many=True)
+    class UserSerializer(serializers.ModelSerializer):
+        class Meta:
+            model = User
+            fields = ('username', )
+
+    comments = CommentListSerializer(many=True, read_only=True)
+    user = UserSerializer(read_only=True)
 
     class Meta:
         model = Article
