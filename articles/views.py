@@ -55,6 +55,18 @@ def article_detail_or_update_or_delete(request, article_pk):
 
 
 @api_view(['POST'])
+def like_article(request, article_pk):
+    article = get_object_or_404(Article, article_pk)
+    user = request.user
+    if article.like_users.all().exists(user=user):
+        article.like_users.remove(user)
+        return Response(status=status.HTTP_204_NO_CONTENT)
+    else:
+        article.like_users.add(user)
+        return Response(status=status.HTTP_201_CREATED)
+
+
+@api_view(['POST'])
 def create_comment(request, article_pk):
     article = get_object_or_404(Article, pk=article_pk)
 
