@@ -1,4 +1,3 @@
-from dataclasses import fields
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
 from .models import Article, Comment
@@ -6,7 +5,7 @@ from .models import Article, Comment
 User = get_user_model()
 
 
-# Article Create/Read/Update
+# Article Create/Detail/Update
 class ArticleSerializer(serializers.ModelSerializer):
     class CommentListSerializer(serializers.ModelSerializer):
         class Meta:
