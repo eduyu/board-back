@@ -8,3 +8,15 @@ urlpatterns = [
     path('api/v1/auth/', include('rest_auth.urls')),
     path('api/v1/auth/signup/', include('rest_auth.registration.urls')),
 ]
+
+"""
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+
+@api_view(['GET'])
+def test(request):
+    print(request.user)
+    return Response('GOOD')
+
+urlpatterns += [path('test/', test), ]
+"""

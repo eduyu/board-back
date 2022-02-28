@@ -5,7 +5,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 from .models import Article, Comment
-from .serializers import ArticleListSerializer, ArticleSerializer, CommentSerializer
+from .serializers import ArticleListSerializer, ArticleSerializer
 
 
 @api_view(['GET', 'POST'])
@@ -90,7 +90,6 @@ def comment_update_or_delete(request, article_pk, comment_pk):
     def delete_comment():
         comment.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-
 
     if request.method == 'PUT':
         return update_comment()
