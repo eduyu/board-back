@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     # 3rd
     'corsheaders',
     'rest_framework',
-    'rest_framework.authtoken',
+    'rest_framework.authtoken',     # token base authentication
     'rest_auth',
     'rest_auth.registration',
     'allauth',
@@ -148,3 +148,11 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 SITE_ID = 1
+
+REST_FRAMEWORK = {
+
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        # Token Base Auth => Request Header ("Authorization": "Token {token}")
+        'rest_framework.authentication.TokenAuthentication',
+    ]
+}
