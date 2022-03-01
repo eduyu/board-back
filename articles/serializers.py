@@ -41,6 +41,12 @@ class ArticleListSerializer(serializers.ModelSerializer):
 
 # Comment Create/Update
 class CommentSerializer(serializers.ModelSerializer):
+    class UserSerializer(serializers.ModelSerializer):
+        class Meta:
+            model = User
+            fields = ('pk', 'username')
+
+    user = UserSerializer(read_only=True)
     class Meta:
         model = Comment
         fields = ('pk', 'user', 'article', 'content')
