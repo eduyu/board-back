@@ -5,8 +5,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/articles/', include('articles.urls')),
     path('api/v1/accounts/', include('accounts.urls')),
-    path('api/v1/auth/', include('rest_auth.urls')),
-    path('api/v1/auth/signup/', include('rest_auth.registration.urls')),
+    path('api/v1/accounts/', include('dj_rest_auth.urls')),
+    path('api/v1/accounts/signup/', include('dj_rest_auth.registration.urls')),
 ]
 
 """

@@ -35,11 +35,12 @@ INSTALLED_APPS = [
     'accounts',
     'articles',
     # 3rd
+    'django_extensions',
     'corsheaders',
     'rest_framework',
     'rest_framework.authtoken',     # token base authentication
-    'rest_auth',
-    'rest_auth.registration',
+    'dj_rest_auth',
+    'dj_rest_auth.registration',
     'allauth',
     'allauth.account',
     # native
@@ -147,12 +148,16 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:8080',
 ]
 
+# CORS_ALLOW_CREDENTIALS = True
+
 SITE_ID = 1
 
 REST_FRAMEWORK = {
-
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        # Token Base Auth => Request Header ("Authorization": "Token {token}")
         'rest_framework.authentication.TokenAuthentication',
-    ]
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        # 'rest_framework.permissions.AllowAny',  # => 기본적으로 모두에게 허용
+        'rest_framework.permissions.IsAuthenticated',    # => 기본적으로 인증받아야 사용
+    ],
 }

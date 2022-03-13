@@ -7,11 +7,10 @@ class ProfileSerializer(serializers.ModelSerializer):
     class ArticleListSerializer(serializers.ModelSerializer):
         class Meta:
             model = Article
-            fields = ('id', 'title', 'content',)
+            fields = ('pk', 'title', 'content',)
 
-
-    # articles = ArticleListSerializer(many=True)
-    # like_articles = ArticleListSerializer(many=True)
+    articles = ArticleListSerializer(many=True)
+    like_articles = ArticleListSerializer(many=True)
 
     class Meta:
         model = get_user_model()
