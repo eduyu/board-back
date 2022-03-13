@@ -38,9 +38,12 @@ INSTALLED_APPS = [
     'django_extensions',
     'corsheaders',
     'rest_framework',
-    'rest_framework.authtoken',     # token base authentication
+    # token base authentication
+    'rest_framework.authtoken',
+    # DRF auth 담당     
     'dj_rest_auth',
     'dj_rest_auth.registration',
+    # django allauth(OAuth 가능)
     'allauth',
     'allauth.account',
     # native
@@ -50,12 +53,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # allauth 사용을 위해 필요
     'django.contrib.sites',
 ]
 
 MIDDLEWARE = [
     # CORS
-    "corsheaders.middleware.CorsMiddleware",
+    # CommonMiddleware보다 위에 위치
+    'corsheaders.middleware.CorsMiddleware',
     # native
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -150,14 +155,18 @@ CORS_ALLOWED_ORIGINS = [
 
 # CORS_ALLOW_CREDENTIALS = True
 
+# django.contrib.sites 에서 등록 필요
 SITE_ID = 1
 
+# drf 설정
 REST_FRAMEWORK = {
+    # 기본 인증을 기본 Token 으로 설정
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
     ],
+    # 인증받은 사용자에게만 요청 허용
     'DEFAULT_PERMISSION_CLASSES': [
-        # 'rest_framework.permissions.AllowAny',  # => 기본적으로 모두에게 허용
-        'rest_framework.permissions.IsAuthenticated',    # => 기본적으로 인증받아야 사용
+        # 'rest_framework.permissions.AllowAny',       # => 기본적으로 모두에게 허용
+        'rest_framework.permissions.IsAuthenticated',  # => 기본적으로 인증받아야 사용
     ],
 }

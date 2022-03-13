@@ -16,5 +16,3 @@ class ProfileSerializer(serializers.ModelSerializer):
         model = get_user_model()
         fields = ('username', 'articles', 'like_articles',)
         read_only_fields = ('username', 'articles', 'like_articles',)
-
-    

@@ -20,7 +20,7 @@ def article_list_or_create(request):
         articles = Article.objects.annotate(
             comment_count=Count('comments', distinct=True),
             like_count=Count('like_users', distinct=True)
-        )
+        ).order_by('-pk')
         serializer = ArticleListSerializer(articles, many=True)
         return Response(serializer.data)
     
