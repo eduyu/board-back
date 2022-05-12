@@ -151,6 +151,7 @@ AUTH_USER_MODEL = 'accounts.User'
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:8080',
+    'https://illustrious-pudding-294a99.netlify.app'
 ]
 
 # CORS_ALLOW_CREDENTIALS = True
